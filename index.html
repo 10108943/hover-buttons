@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hover Button Demo</title>
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .hover-btn {
+      padding: 15px 35px;
+      background-color: #ff4f81;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .hover-btn:hover {
+      background-color: #ff0077;
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="hover-btn">Hover Me 💖</button>
+
+</body>
+</html>
