@@ -3,52 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Class 6 - Input Form</title>
+  <title>JS Class 7 - Math, Date, Random</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: sans-serif;
+      padding: 20px;
     }
-    input {
-      padding: 8px;
-      font-size: 16px;
-      margin-right: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 8px 16px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #output {
+    .output {
       margin-top: 20px;
-      font-size: 20px;
-      color: darkblue;
+      color: darkgreen;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
-  <h1 style="color: purple;">JavaScript Class 6</h1>
+  <h1 style="color: purple;">JavaScript Class 7</h1>
 
-  <input type="text" id="nameInput" placeholder="Apna naam likho" />
-  <button onclick="showName()">Dikhao</button>
-
-  <div id="output"></div>
+  <div class="output" id="result"></div>
 
   <script>
-    function showName() {
-      let name = document.getElementById("nameInput").value;
+    let output = "";
 
-      if (name === "") {
-        document.getElementById("output").innerHTML = "Naam likho pehle 😅";
-      } else {
-        document.getElementById("output").innerHTML = "Welcome, " + name + "! 🎉";
-      }
-    }
+    // Math
+    let num = 7.6;
+    output += "<strong>Math Round:</strong> " + Math.round(num) + "<br>";
+    output += "<strong>Math Square Root of 25:</strong> " + Math.sqrt(25) + "<br>";
+
+    // Random number (1 to 6)
+    let dice = Math.floor(Math.random() * 6) + 1;
+    output += "<strong>Dice roll (1-6):</strong> " + dice + "<br>";
+
+    // Date
+    let now = new Date();
+    output += "<strong>Current Date:</strong> " + now.toDateString() + "<br>";
+    output += "<strong>Current Time:</strong> " + now.toLocaleTimeString() + "<br>";
+
+    // Show all on page
+    document.getElementById("result").innerHTML = output;
   </script>
 </body>
 </html>
