@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Class 7 - Math, Date, Random</title>
+  <title>JS Class 8 - Array Methods</title>
   <style>
     body {
       font-family: sans-serif;
@@ -11,34 +11,39 @@
     }
     .output {
       margin-top: 20px;
-      color: darkgreen;
+      color: darkblue;
       font-size: 18px;
     }
   </style>
 </head>
 <body>
-  <h1 style="color: purple;">JavaScript Class 7</h1>
+  <h1 style="color: purple;">JavaScript Class 8</h1>
 
   <div class="output" id="result"></div>
 
   <script>
     let output = "";
 
-    // Math
-    let num = 7.6;
-    output += "<strong>Math Round:</strong> " + Math.round(num) + "<br>";
-    output += "<strong>Math Square Root of 25:</strong> " + Math.sqrt(25) + "<br>";
+    let fruits = ["apple", "banana", "mango"];
+    output += "<strong>Original Array:</strong> " + fruits.join(", ") + "<br>";
 
-    // Random number (1 to 6)
-    let dice = Math.floor(Math.random() * 6) + 1;
-    output += "<strong>Dice roll (1-6):</strong> " + dice + "<br>";
+    // Push (add new item)
+    fruits.push("orange");
+    output += "<strong>After push('orange'):</strong> " + fruits.join(", ") + "<br>";
 
-    // Date
-    let now = new Date();
-    output += "<strong>Current Date:</strong> " + now.toDateString() + "<br>";
-    output += "<strong>Current Time:</strong> " + now.toLocaleTimeString() + "<br>";
+    // Pop (remove last item)
+    fruits.pop();
+    output += "<strong>After pop():</strong> " + fruits.join(", ") + "<br>";
 
-    // Show all on page
+    // Length
+    output += "<strong>Length of array:</strong> " + fruits.length + "<br>";
+
+    // Map (uppercase all items)
+    let upperFruits = fruits.map(function(item) {
+      return item.toUpperCase();
+    });
+    output += "<strong>After map to UPPERCASE:</strong> " + upperFruits.join(", ") + "<br>";
+
     document.getElementById("result").innerHTML = output;
   </script>
 </body>
