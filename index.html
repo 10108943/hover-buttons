@@ -3,46 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Class 5 - DOM Manipulation</title>
+  <title>JS Class 6 - Input Form</title>
   <style>
-    #box {
-      padding: 20px;
-      background-color: lightblue;
-      color: black;
-      font-size: 18px;
-      border-radius: 10px;
-      margin-bottom: 20px;
+    body {
+      font-family: Arial, sans-serif;
     }
-
-    button {
-      padding: 10px 15px;
+    input {
+      padding: 8px;
       font-size: 16px;
       margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 20px;
+      color: darkblue;
     }
   </style>
 </head>
 <body>
-  <h1 style="color: purple;">JavaScript Class 5</h1>
+  <h1 style="color: purple;">JavaScript Class 6</h1>
 
-  <div id="box">Yeh ek simple box hai</div>
+  <input type="text" id="nameInput" placeholder="Apna naam likho" />
+  <button onclick="showName()">Dikhao</button>
 
-  <button onclick="changeText()">Text Badlo</button>
-  <button onclick="changeColor()">Color Badlo</button>
-  <button onclick="removeBox()">Box Hatado</button>
+  <div id="output"></div>
 
   <script>
-    function changeText() {
-      document.getElementById("box").innerHTML = "Text change ho gaya! 😎";
-    }
+    function showName() {
+      let name = document.getElementById("nameInput").value;
 
-    function changeColor() {
-      document.getElementById("box").style.backgroundColor = "lightgreen";
-      document.getElementById("box").style.color = "darkblue";
-    }
-
-    function removeBox() {
-      document.getElementById("box").remove();
+      if (name === "") {
+        document.getElementById("output").innerHTML = "Naam likho pehle 😅";
+      } else {
+        document.getElementById("output").innerHTML = "Welcome, " + name + "! 🎉";
+      }
     }
   </script>
 </body>
