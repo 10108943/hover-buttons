@@ -3,48 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Class 8 - Array Methods</title>
+  <title>JS Class 9 - Simple Calculator</title>
   <style>
     body {
       font-family: sans-serif;
       padding: 20px;
     }
-    .output {
+    input {
+      padding: 8px;
+      width: 80px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
       margin-top: 20px;
-      color: darkblue;
-      font-size: 18px;
+      font-size: 20px;
+      color: darkgreen;
     }
   </style>
 </head>
 <body>
-  <h1 style="color: purple;">JavaScript Class 8</h1>
+  <h1 style="color: purple;">JavaScript Class 9 - Calculator</h1>
 
-  <div class="output" id="result"></div>
+  <input type="number" id="num1" placeholder="Number 1">
+  <input type="number" id="num2" placeholder="Number 2"><br>
+
+  <button onclick="calculate('+')">+</button>
+  <button onclick="calculate('-')">-</button>
+  <button onclick="calculate('*')">×</button>
+  <button onclick="calculate('/')">÷</button>
+
+  <div id="result"></div>
 
   <script>
-    let output = "";
+    function calculate(operator) {
+      let a = parseFloat(document.getElementById("num1").value);
+      let b = parseFloat(document.getElementById("num2").value);
+      let result = "";
 
-    let fruits = ["apple", "banana", "mango"];
-    output += "<strong>Original Array:</strong> " + fruits.join(", ") + "<br>";
+      if (isNaN(a) || isNaN(b)) {
+        result = "Dono numbers likho please 😅";
+      } else {
+        if (operator === "+") result = a + b;
+        else if (operator === "-") result = a - b;
+        else if (operator === "*") result = a * b;
+        else if (operator === "/") {
+          if (b === 0) result = "0 se divide nahi hota ❌";
+          else result = a / b;
+        }
+      }
 
-    // Push (add new item)
-    fruits.push("orange");
-    output += "<strong>After push('orange'):</strong> " + fruits.join(", ") + "<br>";
-
-    // Pop (remove last item)
-    fruits.pop();
-    output += "<strong>After pop():</strong> " + fruits.join(", ") + "<br>";
-
-    // Length
-    output += "<strong>Length of array:</strong> " + fruits.length + "<br>";
-
-    // Map (uppercase all items)
-    let upperFruits = fruits.map(function(item) {
-      return item.toUpperCase();
-    });
-    output += "<strong>After map to UPPERCASE:</strong> " + upperFruits.join(", ") + "<br>";
-
-    document.getElementById("result").innerHTML = output;
+      document.getElementById("result").innerHTML = "Result: " + result;
+    }
   </script>
 </body>
 </html>
