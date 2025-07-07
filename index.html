@@ -1,91 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      padding: 40px;
-      text-align: center;
-    }
-    input {
-      padding: 10px;
-      width: 60%;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      padding: 10px 15px;
-      margin-left: 10px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-    li {
-      background: white;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      position: relative;
-    }
-    .delete {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      background: red;
-      color: white;
-      border: none;
-      border-radius: 3px;
-      padding: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1 style="color: purple;">JavaScript Project 3: To-Do List</h1>
+function addTask() {
+  let taskInput = document.getElementById("taskInput");
+  let task = taskInput.value.trim();
 
-  <input type="text" id="taskInput" placeholder="Apna task likho...">
-  <button onclick="addTask()">Add Task</button>
+  if (task === "") {
+    alert("⚠️ Arjawan Queen! Pehle kuch likho! 😅");
+    return;
+  }
 
-  <ul id="taskList"></ul>
+  let li = document.createElement("li");
+  li.textContent = task;
 
-  <script>
-    function addTask() {
-      let taskInput = document.getElementById("taskInput");
-      let task = taskInput.value.trim();
+  let delBtn = document.createElement("button");
+  delBtn.textContent = "❌ Delete";
+  delBtn.className = "delete";
+  delBtn.onclick = function () {
+    alert(`Task "${task}" delete ho gaya... Queen ne hukam diya tha! 😎`);
+    li.remove();
+  };
 
-      if (task === "") {
-        alert("Task likho pehle! 😅");
-        return;
-      }
+  li.appendChild(delBtn);
+  document.getElementById("taskList").appendChild(li);
 
-      let li = document.createElement("li");
-      li.textContent = task;
-
-      let delBtn = document.createElement("button");
-      delBtn.textContent = "Delete";
-      delBtn.className = "delete";
-      delBtn.onclick = function () {
-        li.remove();
-      };
-
-      li.appendChild(delBtn);
-      document.getElementById("taskList").appendChild(li);
-
-      taskInput.value = "";
-    }
-  </script>
-</body>
-</html>
+  alert(`🎉 Task "${task}" add ho gaya, Queen Arjawan zindabad! 👑`);
+  taskInput.value = "";
+}
