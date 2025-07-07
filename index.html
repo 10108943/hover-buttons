@@ -3,34 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Class 4 - Events</title>
+  <title>JS Class 5 - DOM Manipulation</title>
   <style>
-    button {
-      padding: 10px 20px;
+    #box {
+      padding: 20px;
+      background-color: lightblue;
+      color: black;
       font-size: 18px;
-      background-color: #6200ee;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      border-radius: 10px;
+      margin-bottom: 20px;
     }
 
-    #output {
-      margin-top: 20px;
-      color: green;
-      font-size: 20px;
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-right: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1 style="color: purple;">JavaScript Class 4</h1>
+  <h1 style="color: purple;">JavaScript Class 5</h1>
 
-  <button onclick="showMessage()">Click Me</button>
-  <div id="output"></div>
+  <div id="box">Yeh ek simple box hai</div>
+
+  <button onclick="changeText()">Text Badlo</button>
+  <button onclick="changeColor()">Color Badlo</button>
+  <button onclick="removeBox()">Box Hatado</button>
 
   <script>
-    function showMessage() {
-      document.getElementById("output").innerHTML = "Welcome, Arjawan! 🎉";
+    function changeText() {
+      document.getElementById("box").innerHTML = "Text change ho gaya! 😎";
+    }
+
+    function changeColor() {
+      document.getElementById("box").style.backgroundColor = "lightgreen";
+      document.getElementById("box").style.color = "darkblue";
+    }
+
+    function removeBox() {
+      document.getElementById("box").remove();
     }
   </script>
 </body>
