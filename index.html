@@ -3,43 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Digital Clock</title>
+  <title>Quiz App</title>
   <style>
     body {
-      background-color: #1a1a1a;
-      color: #00ffcc;
-      font-family: monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      padding: 40px;
+      text-align: center;
     }
-
-    #clock {
-      font-size: 60px;
-      border: 3px solid #00ffcc;
-      padding: 30px 50px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #00ffcc;
+    #quiz-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px gray;
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: green;
     }
   </style>
 </head>
 <body>
-  <div id="clock">00:00:00</div>
+  <h1 style="color: purple;">JavaScript Project 2: Quiz App</h1>
+
+  <div id="quiz-box">
+    <div id="question">Loading...</div>
+    <button onclick="checkAnswer('a')" id="btnA"></button>
+    <button onclick="checkAnswer('b')" id="btnB"></button>
+    <button onclick="checkAnswer('c')" id="btnC"></button>
+    <button onclick="checkAnswer('d')" id="btnD"></button>
+    <div id="result"></div>
+  </div>
 
   <script>
-    function updateClock() {
-      let now = new Date();
-      let hours = now.getHours().toString().padStart(2, '0');
-      let minutes = now.getMinutes().toString().padStart(2, '0');
-      let seconds = now.getSeconds().toString().padStart(2, '0');
+    const quiz = [
+      {
+        question: "HTML ka full form kya hai?",
+        options: {
+          a: "Hyper Text Markup Language",
+          b: "Home Tool Markup Language",
+          c: "Hyperlinks and Text Management Language",
+          d: "None"
+        },
+        correct: "a"
+      },
+      {
+        question: "CSS ka use kis liye hota hai?",
+        options: {
+          a: "Styling",
+          b: "Programming",
+          c: "Hosting",
+          d: "Database"
+        },
+        correct: "a"
+      },
+      {
+        question: "JavaScript kis type ki language hai?",
+        options: {
+          a: "Markup",
+          b: "Styling",
+          c: "Scripting",
+          d: "Database"
+        },
+        correct: "c"
+      }
+    ];
 
-      let timeString = `${hours}:${minutes}:${seconds}`;
-      document.getElementById("clock").textContent = timeString;
+    let current = 0;
+    let score = 0;
+
+    function showQuestion() {
+      if (current < quiz.length) {
+        let q = quiz[current];
+        document.getElementById("question").innerText = q.question;
+        document.getElementById("btnA").innerText = q.options.a;
+        document.getElementById("btnB").innerText = q.options.b;
+        document.getElementById("btnC").innerText = q.options.c;
+        document.getElementById("btnD").innerText = q.options.d;
+      } else {
+        document.getElementById("quiz-box").innerHTML = `<h2>Quiz Completed!</h2><p>Your Score: ${score}/${quiz.length}</p>`;
+      }
     }
 
-    setInterval(updateClock, 1000);
-    updateClock(); // run once immediately
+    function checkAnswer(answer) {
+      if (quiz[current].correct === answer) {
+        score++;
+      }
+      current++;
+      showQuestion();
+    }
+
+    // Start quiz
+    showQuestion();
   </script>
 </body>
 </html>
