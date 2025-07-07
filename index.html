@@ -3,47 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JS Class 10 - Final</title>
+  <title>Digital Clock</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 50px;
+      background-color: #1a1a1a;
+      color: #00ffcc;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px;
-    }
-    #greeting {
-      margin-top: 20px;
-      font-size: 22px;
-      color: darkblue;
+
+    #clock {
+      font-size: 60px;
+      border: 3px solid #00ffcc;
+      padding: 30px 50px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffcc;
     }
   </style>
 </head>
 <body>
-  <h1 style="color: purple;">🎓 JavaScript Class 10 - Final</h1>
-
-  <input type="text" id="name" placeholder="Apna naam likho">
-  <button onclick="showGreeting()">Greet Me</button>
-
-  <div id="greeting"></div>
+  <div id="clock">00:00:00</div>
 
   <script>
-    function showGreeting() {
-      let name = document.getElementById("name").value;
-      let time = new Date().toLocaleTimeString();
-      let message = "";
+    function updateClock() {
+      let now = new Date();
+      let hours = now.getHours().toString().padStart(2, '0');
+      let minutes = now.getMinutes().toString().padStart(2, '0');
+      let seconds = now.getSeconds().toString().padStart(2, '0');
 
-      if (name === "") {
-        message = "Naam likho pehle 😅";
-      } else {
-        message = "Hello, " + name + "! 👋<br>Time: " + time;
-      }
-
-      document.getElementById("greeting").innerHTML = message;
+      let timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById("clock").textContent = timeString;
     }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // run once immediately
   </script>
 </body>
 </html>
